@@ -13,8 +13,11 @@ import java.util.Date;
 
 @Entity
 @EntityListeners(AuditingEntityListener.class)
-@JsonIgnoreProperties(value = {"dtCreation", "dtUpdate"},
-        allowGetters = true)
+@JsonIgnoreProperties(value = {"dtCreation", "dtUpdate"},allowGetters = true)
+@NamedQueries({
+	@NamedQuery(name="User.findAll", query="SELECT u FROM User u"),
+	@NamedQuery(name="User.findByName", query="SELECT u FROM User u WHERE u.firstName = :firstName")
+})
 public class User implements Serializable {
 
     @Id

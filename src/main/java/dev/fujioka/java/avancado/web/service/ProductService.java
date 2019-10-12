@@ -19,21 +19,17 @@ public class ProductService
 
     @Override
     public List<Product> findAll() {
-
         return productRepository.findAll();
     }
 
     @Override
     public Optional<Product> save(Product entity) {
-
         return Optional.of(productRepository.save(entity));
     }
 
     @Override
     public Optional<Product> findById(long id) {
-
         return productRepository.findById(id);
-
     }
 
     @Override
@@ -49,8 +45,18 @@ public class ProductService
     @Override
     public long count() {
         return productRepository.count();
+        
     }
-
-
-
-}
+    public Product buscarProdutoPorID(Long id){
+    	return productRepository.buscarPorId(id);
+    }
+    public List<Product> acharProductByName(String name){
+    	return productRepository.buscarProdutoPorNome(name);
+    }
+    public List<Product> acharProductBySubstring(String string){
+    	return productRepository.buscarProdutoPorSubstring(string);
+    }
+    public Product acharProductAcer(){
+    	return productRepository.buscarProdutosAcer();
+    }
+   }

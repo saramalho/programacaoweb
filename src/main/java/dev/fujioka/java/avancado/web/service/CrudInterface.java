@@ -13,5 +13,4 @@ public interface CrudInterface<T>  {
     void deleteById(long id);
     long count();
 
-
 }

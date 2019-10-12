@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+
+import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -47,6 +49,34 @@ public class UserResource {
         userService.deleteById(id);
         return ResponseEntity.ok().body("User excluded ID: " + id);
     }
-
+    
+    @GetMapping("/user/name/{firstName}")
+    public List<User> getUserListByFirstName(@PathVariable String firstName){
+    	return userService.acharUserByFirstName(firstName);
+    }
+    
+    @GetMapping("/user/substring/{string}")
+    public List<User> getUserBySubstring(@PathVariable String string){
+    	return userService.acharUserBySubstringFirstName(string);
+    }
+    @GetMapping("/user/lastname/{lastName}")
+    public List<User> getProductListByLastName(@PathVariable String lastName){
+    	return userService.acharUserByLastName(lastName);
+    }
+    
+    @GetMapping("/user/substringLastname/{string}")
+    public List<User> getProductBySubstring(@PathVariable String string){
+    	return userService.acharUserBySubstringLastName(string);
+    }
+    
+    @GetMapping("/user/senha/{password}")
+    public List<User> getProductByPassword(@PathVariable String password){
+    	return userService.acharUserByPassword(password);
+    }
+    
+    @GetMapping("/user/acharSarita")
+    public List<User> getSarita(){
+    	return userService.acharSarita();
+    }
 
 }
